@@ -43,7 +43,6 @@ animations = [{
 size = Vector2(102, 67)
 
 [node name="Wolf" type="CharacterBody2D"]
-position = Vector2(27, -37)
 script = ExtResource("1_jrowp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
