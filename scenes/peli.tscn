@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=4 uid="uid://bqiitup37io60"]
+[gd_scene load_steps=5 format=4 uid="uid://dc8f480qsvth5"]
 
-[ext_resource type="PackedScene" uid="uid://bxeont04bbu82" path="res://scenes/character_body_2d.tscn" id="1_n5j0n"]
+[ext_resource type="PackedScene" uid="uid://bvqtr805cnx7q" path="res://scenes/character_body_2d.tscn" id="1_n5j0n"]
 [ext_resource type="Texture2D" uid="uid://c7yfm4yb183r3" path="res://icon.svg" id="2_ji2nj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n5j0n"]
@@ -76,9 +76,10 @@ sources/0 = SubResource("TileSetAtlasSource_n5j0n")
 [node name="Peli" type="Node2D"]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_n5j0n")]
-position = Vector2(-64, -65)
+position = Vector2(-24, 434)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(171, 527)
 scale = Vector2(8, 8)
 tile_map_data = PackedByteArray("AAD//wAAAAAGAAAAAAAAAAAAAAAGAAAAAAABAAAAAAAGAAAAAAACAAAAAAAGAAAAAAD+/wAAAAAGAAAAAAD9/wAAAAAGAAAAAAD8////AAAHAAQAAAD8//7/AAAHAAQAAAD8//3/AAAHAAQAAAADAAAAAAAEAAAAAAAEAAAAAAAEAAAAAAAFAAAAAAAEAAAAAAAGAAAAAAAEAAAAAAAHAAAAAAAEAAAAAAAIAAAAAAAEAAAAAAAJAAAAAAAEAAAAAAAKAAAAAAAEAAAAAAA=")
 tile_set = SubResource("TileSet_ji2nj")
