@@ -76,7 +76,7 @@ sources/0 = SubResource("TileSetAtlasSource_n5j0n")
 [node name="Peli" type="Node2D"]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_n5j0n")]
-position = Vector2(-1703, -82)
+position = Vector2(-1498, -292)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 scale = Vector2(8, 8)
