@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dmn62f37b0o4a"]
+[gd_scene load_steps=9 format=3 uid="uid://dmn62f37b0o4a"]
 
 [ext_resource type="Script" uid="uid://dbyxe8p5pevh5" path="res://scrips/wolf.gd" id="1_jrowp"]
 [ext_resource type="Texture2D" uid="uid://235bdykj0wy1" path="res://assets/Koira (1).svg" id="2_3a5b2"]
@@ -39,6 +39,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jrowp"]
+size = Vector2(102, 67)
+
 [node name="Wolf" type="CharacterBody2D"]
 position = Vector2(27, -37)
 script = ExtResource("1_jrowp")
@@ -49,3 +52,7 @@ scale = Vector2(0.23828125, 0.2421875)
 sprite_frames = SubResource("SpriteFrames_u83lg")
 autoplay = "default"
 frame_progress = 0.50681925
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, -0.5)
+shape = SubResource("RectangleShape2D_jrowp")
