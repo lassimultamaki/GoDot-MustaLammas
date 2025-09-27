@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://bqiitup37io60"]
+[gd_scene load_steps=17 format=4 uid="uid://bqiitup37io60"]
 
 [ext_resource type="Script" uid="uid://dsxw3505tepmn" path="res://scrips/peli.gd" id="1_gjnmc"]
 [ext_resource type="PackedScene" uid="uid://bxeont04bbu82" path="res://scenes/character_body_2d.tscn" id="1_n5j0n"]
@@ -13905,9 +13905,6 @@ _data = {
 }
 point_count = 4
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o53nb"]
-size = Vector2(107.5, 59)
-
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_o6i6p"]
 distance = -18.0
 
@@ -13943,14 +13940,6 @@ script = ExtResource("6_gjnmc")
 [node name="Wolf" parent="Path2D/PathFollow2D" instance=ExtResource("6_645eb")]
 position = Vector2(7.0000463, 8.999999)
 rotation = -3.1387813
-
-[node name="DangereZone2" parent="Path2D/PathFollow2D/Wolf" instance=ExtResource("8_o53nb")]
-position = Vector2(5.9951935, 0.9831505)
-rotation = -0.002811432
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Wolf/DangereZone2"]
-position = Vector2(-3.75, -0.5000019)
-shape = SubResource("RectangleShape2D_o53nb")
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(-1810, -166)
