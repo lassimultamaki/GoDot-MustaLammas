@@ -3,8 +3,11 @@ extends CharacterBody2D
 @onready var animationSprite : AnimatedSprite2D = $AnimatedSprite2D
 @export var Health: int = 1
 var damage_taken = 0
+var second = false
+var moment = false
 signal sheep_used
-
+signal go
+signal went
 func _set_animation():
 	animationSprite.play("idle")
 
@@ -40,3 +43,25 @@ func _calculate_velocity():
 
 func _on_player_sacrofice() -> void:
 	sheep_used.emit()
+	animationSprite.play("two sheep")
+	if second:
+			animationSprite.play("one sheep")
+			if moment:
+				queue_free()	
+			else:
+				went.emit()
+	else:	
+		go.emit()
+	
+
+	
+
+
+func _on_go() -> void:
+	second = true
+	
+	
+
+
+func _on_went() -> void:
+	moment = true

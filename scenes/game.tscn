@@ -8,8 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://c5thhbyr3expg" path="res://scenes/sheep.tscn" id="6_p57ef"]
 [ext_resource type="PackedScene" uid="uid://bwd8ke06qdb1r" path="res://scenes/door.tscn" id="7_u5sy4"]
 [ext_resource type="Script" uid="uid://b1jx7wa57y135" path="res://scenes/path_follow_2d.gd" id="8_gee14"]
-[ext_resource type="PackedScene" uid="uid://bcf5kt61ihyhx" path="res://scenes/boss.tscn" id="9_0tnpc"]
 [ext_resource type="Script" uid="uid://csahasn5r4yob" path="res://scenes/wolf_2_4.gd" id="9_vtaks"]
+[ext_resource type="Script" uid="uid://v8kor84ynlyj" path="res://scrips/Boss.gd" id="10_vtaks"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yqjtg"]
 texture = ExtResource("1_uwrxv")
@@ -840,13 +840,17 @@ script = ExtResource("9_vtaks")
 curve = SubResource("Curve2D_vtaks")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Node2D/Path2D3"]
-position = Vector2(8985, -444)
-rotation = -3.1396596
-
-[node name="Boss" parent="Node2D/Path2D3/PathFollow2D" instance=ExtResource("9_0tnpc")]
-position = Vector2(25.980623, -10.050236)
+position = Vector2(8814.282, -444.33005)
 rotation = 3.1415927
-scale = Vector2(1, 1)
+progress = 170.7207
+rotates = false
+
+[node name="Boss" parent="Node2D/Path2D3/PathFollow2D" instance=ExtResource("3_lnu2h")]
+position = Vector2(-128.71776, 117.66997)
+rotation = 3.1415927
+scale = Vector2(3, 3)
+script = ExtResource("10_vtaks")
+Health = 2
 
 [connection signal="sacrofice" from="Player" to="Sheep" method="_on_player_sacrofice"]
 [connection signal="sacrofise_buff" from="Player" to="Node2D/Path2D/PathFollow2D/Wolf 2_0" method="_on_player_sacrofise_buff"]
