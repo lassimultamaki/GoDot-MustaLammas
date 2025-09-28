@@ -4,6 +4,7 @@ signal sacrofice
 
 const SPEED = 500.0
 var JUMP_VELOCITY = -900.0
+var stop = false
 
 signal swing
 signal sacrofise_buff
@@ -58,13 +59,14 @@ func _input(event):
 		swing.emit()
 		timer.start()
 	if event.is_action_pressed("Sacrofise"):
-		sacrofice.emit()
-		buff.start()
-		sacrofise_buff.emit()
-		print("player is buffet")
-		animated_sprite_2d.play("sacrofice")
-		print("A sheep will be sacroficet")
-		JUMP_VELOCITY = -1000
+		if stop ==false:
+			sacrofice.emit()
+			buff.start()
+			sacrofise_buff.emit()
+			print("player is buffet")
+			animated_sprite_2d.play("sacrofice")
+			print("A sheep will be sacroficet")
+			JUMP_VELOCITY = -1000
 func _on_timer_timeout() -> void:
 			attack_going = false
 
@@ -77,3 +79,7 @@ func _on_weaponhitbox_area_entered(area: Area2D) -> void:
 
 func _on_buff_timeout() -> void:
 	stop_buff.emit()
+
+
+func _on_sheep_stop() -> void:
+	stop = true

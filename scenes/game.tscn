@@ -768,9 +768,9 @@ point_count = 5
 
 [sub_resource type="Curve2D" id="Curve2D_0tnpc"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 7274, -443, 0, 0, 0, 0, 6474, -446, 0, 0, 0, 0, 6897, -444, 0, 0, 0, 0, 7274, -443)
+"points": PackedVector2Array(0, 0, 0, 0, 9025, -453, 0, 0, 0, 0, 6474, -446, 0, 0, 0, 0, 6897, -444, 0, 0, 0, 0, 7274, -443, 0, 0, 0, 0, 9025, -453)
 }
-point_count = 4
+point_count = 5
 
 [sub_resource type="Curve2D" id="Curve2D_vtaks"]
 _data = {
@@ -825,7 +825,7 @@ position = Vector2(-19, 44)
 curve = SubResource("Curve2D_0tnpc")
 
 [node name="PathFollow2D2" type="PathFollow2D" parent="Node2D/Path2D2"]
-position = Vector2(7017.995, -443.67908)
+position = Vector2(7680.9946, -449.31204)
 rotation = -3.1378427
 progress = 1344.0066
 rotates = false
@@ -855,5 +855,6 @@ Health = 2
 [connection signal="sacrofice" from="Player" to="Sheep" method="_on_player_sacrofice"]
 [connection signal="sacrofise_buff" from="Player" to="Node2D/Path2D/PathFollow2D/Wolf 2_0" method="_on_player_sacrofise_buff"]
 [connection signal="stop_buff" from="Player" to="Node2D/Path2D/PathFollow2D/Wolf 2_0" method="_on_player_stop_buff"]
+[connection signal="stop" from="Sheep" to="Player" method="_on_sheep_stop"]
 [connection signal="dead" from="Node2D/Path2D/PathFollow2D/Wolf 2_0" to="Door" method="_on_wolf_2_0_dead"]
 [connection signal="dead" from="Node2D/Path2D/PathFollow2D/Wolf 2_0" to="Node2D/Path2D/PathFollow2D" method="_on_wolf_2_0_dead"]

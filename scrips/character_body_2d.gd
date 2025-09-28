@@ -8,6 +8,7 @@ var moment = false
 signal sheep_used
 signal go
 signal went
+signal stop
 func _set_animation():
 	animationSprite.play("idle")
 
@@ -47,6 +48,7 @@ func _on_player_sacrofice() -> void:
 	if second:
 			animationSprite.play("one sheep")
 			if moment:
+				stop.emit()
 				queue_free()	
 			else:
 				went.emit()
