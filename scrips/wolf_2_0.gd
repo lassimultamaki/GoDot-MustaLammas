@@ -10,7 +10,7 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		damage_taken = int(damage_taken) + 1
 		var current_health = int(Health) - int(damage_taken)
 		print(current_health)
-		if Health <= 0:
+		if current_health <= 0:
 			dead.emit()
 			queue_free()
 			

@@ -60,6 +60,7 @@ autoplay = "default"
 frame_progress = 0.1548687
 
 [node name="DangereZone" parent="." instance=ExtResource("2_6lmpe")]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DangereZone"]
 position = Vector2(-30.5, 39.5)

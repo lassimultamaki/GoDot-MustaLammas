@@ -4,6 +4,8 @@ extends CharacterBody2D
 const SPEED = 500.0
 const JUMP_VELOCITY = -900.0
 
+signal swing
+
 @onready var timer: Timer = $Timer
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var attack_1: AnimatedSprite2D = $Attack_1
@@ -51,6 +53,7 @@ func _input(event):
 		attack_going = true
 		
 		animated_sprite_2d.play("attack")
+		swing.emit()
 		timer.start()
 		
 func _on_timer_timeout() -> void:
