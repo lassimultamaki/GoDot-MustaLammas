@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://ppkg07mlgt35" path="res://assets/Uus kultisti (3).svg" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://irw0bmyofh07" path="res://scrips/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://pox3op1nxiph" path="res://assets/kultisti_real.svg" id="3_qhqgy"]
-[ext_resource type="Script" uid="uid://b50jtbei2we2" path="res://scenes/animation_player.gd" id="4_dqkch"]
+[ext_resource type="Script" uid="uid://b50jtbei2we2" path="res://scrips/animation_player.gd" id="4_dqkch"]
 [ext_resource type="Texture2D" uid="uid://dcbd0qi2lhag6" path="res://assets/Rituaali (1) (1).svg" id="4_qlg0r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
@@ -48,27 +48,27 @@ region = Rect2(10, 0, 90, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jej6c"]
 atlas = ExtResource("4_qlg0r")
-region = Rect2(0, 288, 96, 96)
+region = Rect2(0, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f1ej7"]
 atlas = ExtResource("4_qlg0r")
-region = Rect2(288, 192, 96, 96)
+region = Rect2(96, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oprun"]
 atlas = ExtResource("4_qlg0r")
-region = Rect2(192, 192, 96, 96)
+region = Rect2(192, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a8ls1"]
 atlas = ExtResource("4_qlg0r")
-region = Rect2(96, 192, 96, 96)
+region = Rect2(288, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qfm1y"]
 atlas = ExtResource("4_qlg0r")
-region = Rect2(0, 192, 96, 96)
+region = Rect2(0, 96, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fulsm"]
 atlas = ExtResource("4_qlg0r")
-region = Rect2(288, 96, 96, 96)
+region = Rect2(96, 96, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4r5pv"]
 atlas = ExtResource("4_qlg0r")
@@ -76,27 +76,27 @@ region = Rect2(192, 96, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_60mlk"]
 atlas = ExtResource("4_qlg0r")
-region = Rect2(96, 96, 96, 96)
+region = Rect2(288, 96, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i4ail"]
 atlas = ExtResource("4_qlg0r")
-region = Rect2(0, 96, 96, 96)
+region = Rect2(0, 192, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a38lo"]
 atlas = ExtResource("4_qlg0r")
-region = Rect2(288, 0, 96, 96)
+region = Rect2(96, 192, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4ni07"]
 atlas = ExtResource("4_qlg0r")
-region = Rect2(192, 0, 96, 96)
+region = Rect2(192, 192, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l71n6"]
 atlas = ExtResource("4_qlg0r")
-region = Rect2(96, 0, 96, 96)
+region = Rect2(288, 192, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ke2ow"]
 atlas = ExtResource("4_qlg0r")
-region = Rect2(0, 0, 96, 96)
+region = Rect2(0, 288, 96, 96)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tuyoq"]
 animations = [{
@@ -193,6 +193,21 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
 size = Vector2(89.14703, 81.33736)
 
+[sub_resource type="Animation" id="Animation_tuyoq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D/Weaponhitbox/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="Animation_qlg0r"]
 resource_name = "swing"
 step = 0.1
@@ -209,21 +224,6 @@ tracks/0/keys = {
 "values": [true, false, false, true]
 }
 
-[sub_resource type="Animation" id="Animation_tuyoq"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D/Weaponhitbox/CollisionShape2D:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fjrip"]
 _data = {
 &"RESET": SubResource("Animation_tuyoq"),
@@ -231,7 +231,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qlg0r"]
-size = Vector2(26.058823, 17.14458)
+size = Vector2(49, 40.957832)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fjrip"]
 radius = 29.0
@@ -263,10 +263,10 @@ libraries = {
 speed_scale = 2.0
 script = ExtResource("4_dqkch")
 
-[node name="sacrofice" type="Area2D" parent="AnimatedSprite2D"]
+[node name="sacrofice" type="Area2D" parent="AnimatedSprite2D" groups=["sacrofiser"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/sacrofice"]
-position = Vector2(37.441177, 19.662651)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/sacrofice" groups=["sacrofiser"]]
+position = Vector2(48.17647, 15.036145)
 shape = SubResource("RectangleShape2D_qlg0r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

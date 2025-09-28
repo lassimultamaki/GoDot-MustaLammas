@@ -1,9 +1,10 @@
 extends CharacterBody2D
 @export var target: Node2D
 @onready var animationSprite : AnimatedSprite2D = $AnimatedSprite2D
-#@onready var animationSprite = $AnimatedSprite2D
-
-
+signal sacrifaise_done
+@export var Health: int = 1
+var damage_taken = 0
+signal sheep_used
 
 func _set_animation():
 	animationSprite.play("idle")
@@ -27,7 +28,7 @@ func _calculate_velocity():
 	var sheepNumber = int(name.replace("Sheep", ""))
 	var sheepMultiplicator = 1 if sheepNumber == 0 else sheepNumber
 	var targetPosition = target.position - Vector2(0, -9)
-
+	sheepNumber = 2
 	if position.distance_to(targetPosition) > distanceToTarget * sheepMultiplicator:
 		var direction = (targetPosition - position).normalized()
 		velocity = direction * SPEED
@@ -36,8 +37,7 @@ func _calculate_velocity():
 		velocity.x = 0
 	else:
 		velocity = Vector2.ZERO
-		
-		
+
 
 func _on_player_sacrofice() -> void:
-	pass # Replace with function body.
+	sheep_used.emit()

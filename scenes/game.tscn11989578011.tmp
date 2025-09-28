@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://dwvlppbyeq7p5"]
+[gd_scene load_steps=12 format=4 uid="uid://dwvlppbyeq7p5"]
 
 [ext_resource type="Texture2D" uid="uid://de66kprdslq76" path="res://assets/Tileset (10).svg" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://dnp3sukl7qc00" path="res://scenes/player.tscn" id="2_yqjtg"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://bk5q441cfdtof" path="res://scenes/dangere_zone.tscn" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://c5thhbyr3expg" path="res://scenes/sheep.tscn" id="6_p57ef"]
 [ext_resource type="PackedScene" uid="uid://bwd8ke06qdb1r" path="res://scenes/door.tscn" id="7_u5sy4"]
-[ext_resource type="Script" uid="uid://b1jx7wa57y135" path="res://scenes/path_follow_2d.gd" id="8_gee14"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yqjtg"]
 texture = ExtResource("1_uwrxv")
@@ -115,13 +114,13 @@ texture_region_size = Vector2i(96, 96)
 28:2/0 = 0
 29:2/0 = 0
 0:3/0 = 0
-0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-48, 40, 39, -48, 48, -48, 48, 48, -48, 48)
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-48, -48, 48, -48, 48, 48, -48, 48)
 1:3/0 = 0
-1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-48, 48, -48, -48, -37, -48, 48, 39, 48, 48)
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-48, -48, 48, -48, 48, 48, -48, 48)
 2:3/0 = 0
-2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3, 48, -48, 4, -48, -48, -37, -48, 48, 39, 48, 48)
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-48, -48, 48, -48, 48, 48, -48, 48)
 3:3/0 = 0
-3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-48, 48, -48, 39, 38, -48, 48, -48, 48, -5, -2, 48)
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-48, -48, 48, -48, 48, 48, -48, 48)
 4:3/0 = 0
 4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-48, -48, 48, -48, 48, 48, -48, 48)
 5:3/0 = 0
@@ -755,20 +754,14 @@ tile_size = Vector2i(96, 96)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_yqjtg")
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p57ef"]
-distance = -9.0
-
 [sub_resource type="Curve2D" id="Curve2D_lbhrr"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 2252, -32, 0, 0, 0, 0, -331, -32, 0, 0, 0, 0, 1283, -32, 0, 0, 0, 0, 2238, -32, 0, 0, 0, 0, 2252, -32)
 }
 point_count = 5
 
-[sub_resource type="Curve2D" id="Curve2D_0tnpc"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 7274, -443, 0, 0, 0, 0, 6474, -446, 0, 0, 0, 0, 6897, -444, 0, 0, 0, 0, 7274, -443)
-}
-point_count = 4
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p57ef"]
+distance = -9.0
 
 [node name="Game" type="Node2D"]
 
@@ -778,11 +771,25 @@ tile_set = SubResource("TileSet_lnu2h")
 
 [node name="Player" parent="." instance=ExtResource("2_yqjtg")]
 position = Vector2(-212, -49)
+health = 3
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(0.75, 0.75)
 limit_bottom = 665
 limit_smoothed = true
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_lbhrr")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(2252, -32)
+rotation = 3.1415927
+rotates = false
+script = ExtResource("3_lbhrr")
+
+[node name="Wolf 2_0" parent="Path2D/PathFollow2D" instance=ExtResource("3_lnu2h")]
+position = Vector2(-7, 27)
+rotation = -3.1415927
 
 [node name="DangereZone" parent="." instance=ExtResource("5_iywne")]
 
@@ -790,43 +797,25 @@ limit_smoothed = true
 position = Vector2(-5, 697)
 shape = SubResource("WorldBoundaryShape2D_p57ef")
 
-[node name="Door" parent="." instance=ExtResource("7_u5sy4")]
-position = Vector2(2352, -48)
-
 [node name="Sheep" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_p57ef")]
 position = Vector2(-282, -49)
 target = NodePath("../Player")
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Sheep2" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_p57ef")]
+position = Vector2(-350.99997, -48.999996)
+target = NodePath("../Player")
 
-[node name="Path2D" type="Path2D" parent="Node2D"]
-curve = SubResource("Curve2D_lbhrr")
+[node name="Sheep3" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_p57ef")]
+position = Vector2(-412, -52.00001)
+target = NodePath("../Player")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Node2D/Path2D"]
-position = Vector2(2252, -32)
-rotation = 3.1415927
-rotates = false
-script = ExtResource("3_lbhrr")
+[node name="Sheep4" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_p57ef")]
+position = Vector2(-476, -52.00001)
+target = NodePath("../Player")
 
-[node name="Wolf 2_0" parent="Node2D/Path2D/PathFollow2D" instance=ExtResource("3_lnu2h")]
-position = Vector2(-7, 27)
-rotation = -3.1415927
-
-[node name="Path2D2" type="Path2D" parent="Node2D"]
-position = Vector2(-19, 44)
-curve = SubResource("Curve2D_0tnpc")
-
-[node name="PathFollow2D2" type="PathFollow2D" parent="Node2D/Path2D2"]
-position = Vector2(7017.995, -443.67908)
-rotation = -3.1378427
-progress = 1344.0066
-rotates = false
-script = ExtResource("8_gee14")
-
-[node name="Wolf 2_2" parent="Node2D/Path2D2/PathFollow2D2" instance=ExtResource("3_lnu2h")]
-position = Vector2(-9.838379, 43.0372)
-rotation = 3.1378427
+[node name="Door" parent="." instance=ExtResource("7_u5sy4")]
+position = Vector2(2352, -48)
 
 [connection signal="sacrofice" from="Player" to="Sheep" method="_on_player_sacrofice"]
-[connection signal="dead" from="Node2D/Path2D/PathFollow2D/Wolf 2_0" to="Door" method="_on_wolf_2_0_dead"]
-[connection signal="dead" from="Node2D/Path2D/PathFollow2D/Wolf 2_0" to="Node2D/Path2D/PathFollow2D" method="_on_wolf_2_0_dead"]
+[connection signal="dead" from="Path2D/PathFollow2D/Wolf 2_0" to="Path2D/PathFollow2D" method="_on_wolf_2_0_dead"]
+[connection signal="dead" from="Path2D/PathFollow2D/Wolf 2_0" to="Door" method="_on_wolf_2_0_dead"]

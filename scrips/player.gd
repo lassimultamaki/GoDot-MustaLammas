@@ -6,6 +6,7 @@ const SPEED = 500.0
 const JUMP_VELOCITY = -900.0
 
 signal swing
+signal sacrofise_buff
 
 @onready var timer: Timer = $Timer
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -52,20 +53,19 @@ func _physics_process(delta: float) -> void:
 func _input(event):
 	if event.is_action_pressed("Attack"):
 		attack_going = true
-		
 		animated_sprite_2d.play("attack")
 		swing.emit()
 		timer.start()
-		
-func input(event):
 	if event.is_action_pressed("Sacrofise"):
 		sacrofice.emit()
-		print("A sheep will be sacroficet")
 		animated_sprite_2d.play("sacrofice")
+		print("A sheep will be sacroficet")
+		
 func _on_timer_timeout() -> void:
-	attack_going = false
-	
+			attack_going = false
 
+			
 func _on_weaponhitbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Hurtable"):
 		print("Hit")
+		
