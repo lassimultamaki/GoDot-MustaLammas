@@ -36,3 +36,8 @@ func _calculate_velocity():
 		velocity.x = 0
 	else:
 		velocity = Vector2.ZERO
+		
+		
+
+func _on_player_sacrofice() -> void:
+	pass # Replace with function body.

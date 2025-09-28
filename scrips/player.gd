@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+signal sacrofice 
 
 const SPEED = 500.0
 const JUMP_VELOCITY = -900.0
@@ -56,6 +57,11 @@ func _input(event):
 		swing.emit()
 		timer.start()
 		
+func input(event):
+	if event.is_action_pressed("Sacrofise"):
+		sacrofice.emit()
+		print("A sheep will be sacroficet")
+		animated_sprite_2d.play("sacrofice")
 func _on_timer_timeout() -> void:
 	attack_going = false
 	

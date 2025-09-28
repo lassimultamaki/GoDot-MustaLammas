@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bwd8ke06qdb1r"]
+[gd_scene load_steps=6 format=3 uid="uid://bwd8ke06qdb1r"]
 
 [ext_resource type="Texture2D" uid="uid://de66kprdslq76" path="res://assets/Tileset (10).svg" id="1_hpvv5"]
+[ext_resource type="Script" uid="uid://b8ybbff3cftgs" path="res://scrips/door.gd" id="1_uvdjg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uvdjg"]
 atlas = ExtResource("1_hpvv5")
@@ -20,43 +21,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_la1wf"]
 size = Vector2(97, 97)
 
-[sub_resource type="Animation" id="Animation_hpvv5"]
-resource_name = "open"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.93333334),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_uvdjg"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_83dcw"]
-_data = {
-&"RESET": SubResource("Animation_uvdjg"),
-&"open": SubResource("Animation_hpvv5")
-}
-
 [node name="Door" type="RigidBody2D"]
+script = ExtResource("1_uvdjg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_83dcw")
@@ -64,8 +30,3 @@ sprite_frames = SubResource("SpriteFrames_83dcw")
 [node name="Geate" type="CollisionShape2D" parent="."]
 position = Vector2(-1.5, 0.5)
 shape = SubResource("RectangleShape2D_la1wf")
-
-[node name="Open" type="AnimationPlayer" parent="Geate"]
-libraries = {
-&"": SubResource("AnimationLibrary_83dcw")
-}
