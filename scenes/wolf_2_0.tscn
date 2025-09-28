@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://kle0ktscnk08"]
+[gd_scene load_steps=12 format=3 uid="uid://kle0ktscnk08"]
 
 [ext_resource type="Texture2D" uid="uid://235bdykj0wy1" path="res://assets/Koira (1).svg" id="1_dxg01"]
+[ext_resource type="Script" uid="uid://psbks1j08gd3" path="res://scrips/wolf_2_0.gd" id="1_pddhj"]
 [ext_resource type="PackedScene" uid="uid://bk5q441cfdtof" path="res://scenes/dangere_zone.tscn" id="2_6lmpe"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6lmpe"]
@@ -49,6 +50,7 @@ size = Vector2(50, 34)
 size = Vector2(80, 45)
 
 [node name="Wolf 2_0" type="RigidBody2D" groups=["Hurtable"]]
+script = ExtResource("1_pddhj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-33.000023, 20.000004)
@@ -69,11 +71,11 @@ position = Vector2(-35, 42)
 shape = SubResource("RectangleShape2D_ucrdt")
 debug_color = Color(0.96795267, 0.019774808, 0.4617191, 0.41960785)
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." groups=["Hurtable"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(-31, 36.5)
 shape = SubResource("RectangleShape2D_6lmpe")
 debug_color = Color(0.8811202, 0.31917298, 0.2977876, 0.41960785)
 
-[connection signal="area_entered" from="Hitbox" to="DangereZone" method="_on_hitbox_area_entered"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

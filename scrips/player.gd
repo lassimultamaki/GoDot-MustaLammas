@@ -59,4 +59,4 @@ func _on_timer_timeout() -> void:
 
 func _on_weaponhitbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Hurtable"):
-		area.take_damage()
+		print("Hit")

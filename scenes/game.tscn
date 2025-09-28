@@ -804,9 +804,11 @@ position = Vector2(-350.99997, -48.999996)
 target = NodePath("../Sheep")
 
 [node name="Sheep3" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_p57ef")]
-position = Vector2(-280.99997, -111.99999)
+position = Vector2(-412, -52.00001)
 target = NodePath("../Sheep2")
 
 [node name="Sheep4" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_p57ef")]
-position = Vector2(-344.99997, -111.99999)
+position = Vector2(-476, -52.00001)
 target = NodePath("../Sheep3")
+
+[connection signal="dead" from="Path2D/PathFollow2D/Wolf 2_0" to="Path2D/PathFollow2D" method="_on_wolf_2_0_dead"]

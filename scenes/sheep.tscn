@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://c5thhbyr3expg"]
 
-[ext_resource type="Script" uid="uid://b0740qqweddaw" path="res://character_body_2d.gd" id="1_gw4f6"]
+[ext_resource type="Script" uid="uid://b0740qqweddaw" path="res://scrips/character_body_2d.gd" id="1_gw4f6"]
 [ext_resource type="Texture2D" uid="uid://crjj22588pign" path="res://assets/unnamed (2).svg" id="2_6qn06"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_55m3e"]
@@ -86,12 +86,14 @@ radius = 143.34923
 
 [node name="Sheep" type="CharacterBody2D"]
 scale = Vector2(0.2, 0.2)
+collision_layer = 8
+collision_mask = 9
 script = ExtResource("1_gw4f6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_jjfva")
 autoplay = "default"
-frame_progress = 0.56210315
+frame_progress = 0.020640599
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-9, 96)
