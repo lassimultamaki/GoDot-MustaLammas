@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://dwvlppbyeq7p5"]
+[gd_scene load_steps=17 format=4 uid="uid://dwvlppbyeq7p5"]
 
 [ext_resource type="Texture2D" uid="uid://de66kprdslq76" path="res://assets/Tileset (10).svg" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://dnp3sukl7qc00" path="res://scenes/player.tscn" id="2_yqjtg"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://c5thhbyr3expg" path="res://scenes/sheep.tscn" id="6_p57ef"]
 [ext_resource type="PackedScene" uid="uid://bwd8ke06qdb1r" path="res://scenes/door.tscn" id="7_u5sy4"]
 [ext_resource type="Script" uid="uid://b1jx7wa57y135" path="res://scenes/path_follow_2d.gd" id="8_gee14"]
+[ext_resource type="PackedScene" uid="uid://bcf5kt61ihyhx" path="res://scenes/boss.tscn" id="9_0tnpc"]
+[ext_resource type="Script" uid="uid://csahasn5r4yob" path="res://scenes/wolf_2_4.gd" id="9_vtaks"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yqjtg"]
 texture = ExtResource("1_uwrxv")
@@ -770,6 +772,12 @@ _data = {
 }
 point_count = 4
 
+[sub_resource type="Curve2D" id="Curve2D_vtaks"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 8985, -444, 0, 0, 0, 0, 7433, -447, 0, 0, 0, 0, 8483, -447, 0, 0, 0, 0, 8985, -444)
+}
+point_count = 4
+
 [node name="Game" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -826,7 +834,22 @@ script = ExtResource("8_gee14")
 [node name="Wolf 2_2" parent="Node2D/Path2D2/PathFollow2D2" instance=ExtResource("3_lnu2h")]
 position = Vector2(-9.838379, 43.0372)
 rotation = 3.1378427
+script = ExtResource("9_vtaks")
+
+[node name="Path2D3" type="Path2D" parent="Node2D"]
+curve = SubResource("Curve2D_vtaks")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Node2D/Path2D3"]
+position = Vector2(8985, -444)
+rotation = -3.1396596
+
+[node name="Boss" parent="Node2D/Path2D3/PathFollow2D" instance=ExtResource("9_0tnpc")]
+position = Vector2(25.980623, -10.050236)
+rotation = 3.1415927
+scale = Vector2(1, 1)
 
 [connection signal="sacrofice" from="Player" to="Sheep" method="_on_player_sacrofice"]
+[connection signal="sacrofise_buff" from="Player" to="Node2D/Path2D/PathFollow2D/Wolf 2_0" method="_on_player_sacrofise_buff"]
+[connection signal="stop_buff" from="Player" to="Node2D/Path2D/PathFollow2D/Wolf 2_0" method="_on_player_stop_buff"]
 [connection signal="dead" from="Node2D/Path2D/PathFollow2D/Wolf 2_0" to="Door" method="_on_wolf_2_0_dead"]
 [connection signal="dead" from="Node2D/Path2D/PathFollow2D/Wolf 2_0" to="Node2D/Path2D/PathFollow2D" method="_on_wolf_2_0_dead"]

@@ -1,7 +1,6 @@
 extends CharacterBody2D
 @export var target: Node2D
 @onready var animationSprite : AnimatedSprite2D = $AnimatedSprite2D
-signal sacrifaise_done
 @export var Health: int = 1
 var damage_taken = 0
 signal sheep_used

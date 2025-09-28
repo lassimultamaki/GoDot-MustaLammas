@@ -269,6 +269,10 @@ script = ExtResource("4_dqkch")
 position = Vector2(48.17647, 15.036145)
 shape = SubResource("RectangleShape2D_qlg0r")
 
+[node name="Buff" type="Timer" parent="AnimatedSprite2D"]
+wait_time = 10.0
+one_shot = true
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 5)
 shape = SubResource("CapsuleShape2D_fjrip")
@@ -278,4 +282,5 @@ one_shot = true
 
 [connection signal="swing" from="." to="AnimatedSprite2D/Weaponhitbox/CollisionShape2D/AnimationPlayer" method="_on_player_swing"]
 [connection signal="area_entered" from="AnimatedSprite2D/Weaponhitbox" to="." method="_on_weaponhitbox_area_entered"]
+[connection signal="timeout" from="AnimatedSprite2D/Buff" to="." method="_on_buff_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

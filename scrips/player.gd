@@ -3,11 +3,12 @@ extends CharacterBody2D
 signal sacrofice 
 
 const SPEED = 500.0
-const JUMP_VELOCITY = -900.0
+var JUMP_VELOCITY = -900.0
 
 signal swing
 signal sacrofise_buff
-
+signal stop_buff
+@onready var buff: Timer = $AnimatedSprite2D/Buff
 @onready var timer: Timer = $Timer
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var attack_1: AnimatedSprite2D = $Attack_1
@@ -58,9 +59,12 @@ func _input(event):
 		timer.start()
 	if event.is_action_pressed("Sacrofise"):
 		sacrofice.emit()
+		buff.start()
+		sacrofise_buff.emit()
+		print("player is buffet")
 		animated_sprite_2d.play("sacrofice")
 		print("A sheep will be sacroficet")
-		
+		JUMP_VELOCITY = -1000
 func _on_timer_timeout() -> void:
 			attack_going = false
 
@@ -69,3 +73,7 @@ func _on_weaponhitbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Hurtable"):
 		print("Hit")
 		
+
+
+func _on_buff_timeout() -> void:
+	stop_buff.emit()

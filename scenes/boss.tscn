@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://bcf5kt61ihyhx"]
+
+[ext_resource type="Texture2D" uid="uid://cqdpqubrlevw6" path="res://assets/Minokoira walk.svg" id="1_dlmty"]
+[ext_resource type="PackedScene" uid="uid://bk5q441cfdtof" path="res://scenes/dangere_zone.tscn" id="2_neq0i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_neq0i"]
+atlas = ExtResource("1_dlmty")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jncid"]
+atlas = ExtResource("1_dlmty")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnbj4"]
+atlas = ExtResource("1_dlmty")
+region = Rect2(0, 96, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3bxh"]
+atlas = ExtResource("1_dlmty")
+region = Rect2(96, 96, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wqpjq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_neq0i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jncid")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qnbj4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3bxh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jncid"]
+radius = 14.0
+height = 86.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qnbj4"]
+height = 82.0
+
+[node name="Boss" type="RigidBody2D"]
+scale = Vector2(4, 4)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wqpjq")
+frame_progress = 0.041408774
+
+[node name="DangereZone" parent="." instance=ExtResource("2_neq0i")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DangereZone"]
+position = Vector2(5, 3)
+shape = SubResource("CapsuleShape2D_jncid")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5, 5)
+shape = SubResource("CapsuleShape2D_qnbj4")

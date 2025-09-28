@@ -1,8 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://c5thhbyr3expg"]
+[gd_scene load_steps=15 format=3 uid="uid://c5thhbyr3expg"]
 
 [ext_resource type="Script" uid="uid://b0740qqweddaw" path="res://scrips/character_body_2d.gd" id="1_gw4f6"]
 [ext_resource type="Texture2D" uid="uid://crjj22588pign" path="res://assets/unnamed (2).svg" id="2_6qn06"]
-[ext_resource type="Script" uid="uid://xwmlip7l5qau" path="res://scenes/label.gd" id="3_6qn06"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4apx6"]
 radius = 143.34923
@@ -85,9 +84,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="LabelSettings" id="LabelSettings_6qn06"]
-font_size = 100
-
 [node name="Sheep" type="CharacterBody2D" groups=["sacrofice"]]
 scale = Vector2(0.2, 0.2)
 collision_layer = 8
@@ -111,22 +107,4 @@ position = Vector2(-8.999999, 95.99999)
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("CircleShape2D_4apx6")
 
-[node name="SheepCount" type="Label" parent="."]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -272.49997
-offset_top = -165.00003
-offset_right = 272.49997
-grow_horizontal = 2
-grow_vertical = 0
-label_settings = SubResource("LabelSettings_6qn06")
-max_lines_visible = 2
-visible_characters = 25
-script = ExtResource("3_6qn06")
-
-[connection signal="sacrifaise_done" from="." to="." method="_on_sacrifaise_done"]
-[connection signal="sheep_used" from="." to="SheepCount" method="_on_sheep_sheep_used"]
 [connection signal="area_entered" from="Altar" to="." method="_on_altar_area_entered"]
