@@ -1,0 +1,79 @@
+[gd_scene load_steps=11 format=3 uid="uid://kle0ktscnk08"]
+
+[ext_resource type="Texture2D" uid="uid://235bdykj0wy1" path="res://assets/Koira (1).svg" id="1_dxg01"]
+[ext_resource type="PackedScene" uid="uid://bk5q441cfdtof" path="res://scenes/dangere_zone.tscn" id="2_6lmpe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6lmpe"]
+atlas = ExtResource("1_dxg01")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pddhj"]
+atlas = ExtResource("1_dxg01")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ucrdt"]
+atlas = ExtResource("1_dxg01")
+region = Rect2(0, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6ray"]
+atlas = ExtResource("1_dxg01")
+region = Rect2(512, 512, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4lenh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6lmpe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pddhj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ucrdt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e6ray")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pddhj"]
+size = Vector2(69, 39)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ucrdt"]
+size = Vector2(50, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6lmpe"]
+size = Vector2(80, 45)
+
+[node name="Wolf 2_0" type="RigidBody2D" groups=["Hurtable"]]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-33.000023, 20.000004)
+scale = Vector2(0.14550783, 0.15429688)
+sprite_frames = SubResource("SpriteFrames_4lenh")
+autoplay = "default"
+frame_progress = 0.1548687
+
+[node name="DangereZone" parent="." instance=ExtResource("2_6lmpe")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DangereZone"]
+position = Vector2(-30.5, 39.5)
+shape = SubResource("RectangleShape2D_pddhj")
+debug_color = Color(1, 1, 1, 0.41960785)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-35, 42)
+shape = SubResource("RectangleShape2D_ucrdt")
+debug_color = Color(0.96795267, 0.019774808, 0.4617191, 0.41960785)
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-31, 36.5)
+shape = SubResource("RectangleShape2D_6lmpe")
+debug_color = Color(0.8811202, 0.31917298, 0.2977876, 0.41960785)
+
+[connection signal="area_entered" from="Hitbox" to="DangereZone" method="_on_hitbox_area_entered"]

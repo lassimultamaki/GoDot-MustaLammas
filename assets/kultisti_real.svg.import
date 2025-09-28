@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c71gpwew5kgdj"
-path="res://.godot/imported/Uus kultisti (2).svg-7a837a8b1b0552f1e62cdf9e19783fc9.ctex"
+uid="uid://pox3op1nxiph"
+path="res://.godot/imported/kultisti_real.svg-4e7d08652d92f3bf566ec6fbe9a96307.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Uus kultisti (2).svg"
-dest_files=["res://.godot/imported/Uus kultisti (2).svg-7a837a8b1b0552f1e62cdf9e19783fc9.ctex"]
+source_file="res://assets/kultisti_real.svg"
+dest_files=["res://.godot/imported/kultisti_real.svg-4e7d08652d92f3bf566ec6fbe9a96307.ctex"]
 
 [params]
 
