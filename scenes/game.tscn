@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=4 uid="uid://dwvlppbyeq7p5"]
+[gd_scene load_steps=10 format=4 uid="uid://dwvlppbyeq7p5"]
 
 [ext_resource type="Texture2D" uid="uid://de66kprdslq76" path="res://assets/Tileset (10).svg" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://dnp3sukl7qc00" path="res://scenes/player.tscn" id="2_yqjtg"]
-[ext_resource type="Script" uid="uid://diacxddtoh0ih" path="res://scenes/path_follow_2d.gd" id="3_lbhrr"]
+[ext_resource type="Script" uid="uid://diacxddtoh0ih" path="res://scrips/path_follow_2d.gd" id="3_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://kle0ktscnk08" path="res://scenes/wolf_2_0.tscn" id="3_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://bk5q441cfdtof" path="res://scenes/dangere_zone.tscn" id="5_iywne"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yqjtg"]
 texture = ExtResource("1_uwrxv")
@@ -757,6 +758,9 @@ _data = {
 }
 point_count = 4
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p57ef"]
+distance = -9.0
+
 [node name="Game" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -767,6 +771,7 @@ tile_set = SubResource("TileSet_lnu2h")
 position = Vector2(-293, -56)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(0.75, 0.75)
 limit_bottom = 665
 limit_smoothed = true
 
@@ -782,3 +787,9 @@ script = ExtResource("3_lbhrr")
 [node name="Wolf 2_0" parent="Path2D/PathFollow2D" instance=ExtResource("3_lnu2h")]
 position = Vector2(-10, 27)
 rotation = -3.1415927
+
+[node name="DangereZone" parent="." instance=ExtResource("5_iywne")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DangereZone"]
+position = Vector2(-5, 697)
+shape = SubResource("WorldBoundaryShape2D_p57ef")
