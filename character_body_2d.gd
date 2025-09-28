@@ -1,0 +1,38 @@
+extends CharacterBody2D
+@export var target: Node2D
+@onready var animationSprite : AnimatedSprite2D = $AnimatedSprite2D
+#@onready var animationSprite = $AnimatedSprite2D
+
+
+
+func _set_animation():
+	animationSprite.play("idle")
+
+const SPEED = 300
+const JUMP_VELOCITY = -100
+
+func _physics_process(_delta):
+	
+	if not is_on_floor():
+		velocity += get_gravity() * _delta
+
+	_calculate_velocity()
+
+	_set_animation()
+
+	move_and_slide()
+
+func _calculate_velocity():
+	var distanceToTarget = 20
+	var sheepNumber = int(name.replace("Sheep", ""))
+	var sheepMultiplicator = 1 if sheepNumber == 0 else sheepNumber
+	var targetPosition = target.position - Vector2(0, -9)
+
+	if position.distance_to(targetPosition) > distanceToTarget * sheepMultiplicator:
+		var direction = (targetPosition - position).normalized()
+		velocity = direction * SPEED
+		velocity.y *= 3
+	elif position.y - targetPosition.y < -2 || position.y - targetPosition.y > 2:
+		velocity.x = 0
+	else:
+		velocity = Vector2.ZERO

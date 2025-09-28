@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=4 uid="uid://dwvlppbyeq7p5"]
+[gd_scene load_steps=11 format=4 uid="uid://dwvlppbyeq7p5"]
 
 [ext_resource type="Texture2D" uid="uid://de66kprdslq76" path="res://assets/Tileset (10).svg" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://dnp3sukl7qc00" path="res://scenes/player.tscn" id="2_yqjtg"]
 [ext_resource type="Script" uid="uid://diacxddtoh0ih" path="res://scrips/path_follow_2d.gd" id="3_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://kle0ktscnk08" path="res://scenes/wolf_2_0.tscn" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://bk5q441cfdtof" path="res://scenes/dangere_zone.tscn" id="5_iywne"]
+[ext_resource type="PackedScene" uid="uid://c5thhbyr3expg" path="res://scenes/sheep.tscn" id="6_p57ef"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yqjtg"]
 texture = ExtResource("1_uwrxv")
@@ -768,7 +769,7 @@ tile_map_data = PackedByteArray("AAD9/wAAAAAAAAAAAAD+/wAAAAAAAAAAAAD//wAAAAAAAAA
 tile_set = SubResource("TileSet_lnu2h")
 
 [node name="Player" parent="." instance=ExtResource("2_yqjtg")]
-position = Vector2(-293, -56)
+position = Vector2(-212, -49)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(0.75, 0.75)
@@ -793,3 +794,19 @@ rotation = -3.1415927
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DangereZone"]
 position = Vector2(-5, 697)
 shape = SubResource("WorldBoundaryShape2D_p57ef")
+
+[node name="Sheep" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_p57ef")]
+position = Vector2(-282, -49)
+target = NodePath("../Player")
+
+[node name="Sheep2" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_p57ef")]
+position = Vector2(-350.99997, -48.999996)
+target = NodePath("../Sheep")
+
+[node name="Sheep3" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_p57ef")]
+position = Vector2(-280.99997, -111.99999)
+target = NodePath("../Sheep2")
+
+[node name="Sheep4" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_p57ef")]
+position = Vector2(-344.99997, -111.99999)
+target = NodePath("../Sheep3")
