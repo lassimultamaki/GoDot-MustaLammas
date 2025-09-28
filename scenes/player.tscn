@@ -144,8 +144,9 @@ script = ExtResource("1_g2els")
 position = Vector2(5, 5.0000005)
 scale = Vector2(0.8717949, 0.8645833)
 sprite_frames = SubResource("SpriteFrames_tuyoq")
-animation = &"Run"
-frame_progress = 0.85196894
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.901306
 
 [node name="Weaponhitbox" type="Area2D" parent="AnimatedSprite2D"]
 

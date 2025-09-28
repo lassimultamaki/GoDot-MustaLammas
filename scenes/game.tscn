@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=4 uid="uid://dwvlppbyeq7p5"]
+[gd_scene load_steps=8 format=4 uid="uid://dwvlppbyeq7p5"]
 
 [ext_resource type="Texture2D" uid="uid://de66kprdslq76" path="res://assets/Tileset (10).svg" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://dnp3sukl7qc00" path="res://scenes/player.tscn" id="2_yqjtg"]
+[ext_resource type="Script" uid="uid://diacxddtoh0ih" path="res://scenes/path_follow_2d.gd" id="3_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://kle0ktscnk08" path="res://scenes/wolf_2_0.tscn" id="3_lnu2h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yqjtg"]
@@ -775,6 +776,8 @@ curve = SubResource("Curve2D_lbhrr")
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 position = Vector2(2289, -32)
 rotation = 3.1415927
+rotates = false
+script = ExtResource("3_lbhrr")
 
 [node name="Wolf 2_0" parent="Path2D/PathFollow2D" instance=ExtResource("3_lnu2h")]
 position = Vector2(-10, 27)
